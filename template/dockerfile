@@ -1,0 +1,10 @@
+FROM python:3
+
+RUN mkdir INTEVIEW_REPO
+RUN cd INTEVIEW_REPO
+
+WORKDIR /INTEVIEW_REPO
+
+#COPY FILE OUTSIDE TO DOCKER
+COPY / .
+CMD ["python", "-u", "task1.py"]
