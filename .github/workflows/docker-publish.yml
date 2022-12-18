@@ -36,4 +36,4 @@ jobs:
           context: ./
           file: ./template/dockerfile
           push: true
-          tags: blackkoala/${{env.IMAGE_NAME}}:latest
+          tags: blackkoala/${{env.IMAGE_NAME}}:lastest
