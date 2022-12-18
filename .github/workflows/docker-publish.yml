@@ -14,7 +14,7 @@ on:
 
 env:
   # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: "intv-task1"
 
 
 jobs:
@@ -36,4 +36,4 @@ jobs:
           context: ./template
           file: ./src/task1.py
           push: true
-          tags: blackkoala/ ${{ env.IMAGE_NAME}}
+          tags: blackkoala/${{env.IMAGE_NAME}}
