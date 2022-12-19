@@ -1,0 +1,37 @@
+
+apiVersion: apps/v1 # for versions before 1.6.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ftp-deployment
+  labels:
+    app: my-ftp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-ftp
+  template:
+    metadata:
+      labels:
+        app: my-ftp
+    spec:
+      hostNetwork: true
+      volumes:
+      - name: task-pv-storage
+        persistentVolumeClaim:
+          claimName: task-pv-claim
+      containers:
+      - name: my-ftp-container
+        image: fauria/vsftpd
+        envFrom:
+        - configMapRef: 
+            name: my-ftp-config
+        ports:
+        - containerPort: 20
+        - containerPort: 21
+        - containerPort: 30020
+        - containerPort: 30021
+        volumeMounts:
+        - mountPath: "/home/vsftpd"
+          name: task-pv-storage
+
